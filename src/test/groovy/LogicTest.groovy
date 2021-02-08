@@ -31,7 +31,7 @@ class LogicTest extends GroovyTestCase {
             x = true
         }
 
-        assert x == true
+        assert x == false
     }
 
     void testAndWithFalse() {
