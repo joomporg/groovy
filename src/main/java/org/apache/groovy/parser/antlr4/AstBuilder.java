@@ -1674,6 +1674,10 @@ public class AstBuilder extends GroovyParserBaseVisitor<Object> {
         PropertyNode propertyNode;
         FieldNode fieldNode = classNode.getDeclaredField(fieldName);
 
+        if (fieldNode != null) {
+            throw createParsingFailedException("A field named'" + fieldName + "' already exists", ctx);
+        }
+
         if (fieldNode != null && !classNode.hasProperty(fieldName)) {
             classNode.getFields().remove(fieldNode);
 
@@ -1712,6 +1716,10 @@ public class AstBuilder extends GroovyParserBaseVisitor<Object> {
         FieldNode existingFieldNode = classNode.getDeclaredField(fieldName);
         if (null != existingFieldNode && !existingFieldNode.isSynthetic()) {
             throw createParsingFailedException("The field '" + fieldName + "' is declared multiple times", ctx);
+        }
+
+        if (classNode.hasProperty(fieldName)) {
+            throw createParsingFailedException("Property of '" + fieldName + "' already exists", ctx);
         }
 
         FieldNode fieldNode;
