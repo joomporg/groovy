@@ -14,6 +14,8 @@
 # limitations under the License.
 
 language: groovy
+node_js:
+  - node
 
 # set sudo required for non-container vm with more mem even though we don't need sudo
 # https://docs.travis-ci.com/user/reference/overview/
@@ -49,8 +51,7 @@ addons:
     organization: "joomporg"
 
 script:
-  - ./gradlew -version
-  - travis_wait 60 ./gradlew sonarqube
+  - ./gradlew sonarqube
 
 # As recommended in:
 # https://docs.travis-ci.com/user/languages/java/#Caching
