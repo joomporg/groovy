@@ -44,6 +44,10 @@ matrix:
     - env: BC='sonar'
       jdk: openjdk11
 
+addons:
+  sonarcloud:
+    organization: "joomporg"
+
 before_script:
   - unset _JAVA_OPTIONS
 
