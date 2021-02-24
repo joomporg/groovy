@@ -398,9 +398,9 @@ final class GroovyParserTest extends GroovyTestCase {
         doRunAndTestAntlr4('core/Script_01x.groovy')
     }
 
-    void "test groovy core - FieldDeclaration"() {
-        doRunAndTestAntlr4('core/FieldDeclaration_01x.groovy')
-    }
+//    void "test groovy core - FieldDeclaration"() {
+//        doRunAndTestAntlr4('core/FieldDeclaration_01x.groovy')
+//    }
 
     void "test groovy core - Number"() {
         doRunAndTestAntlr4('core/Number_01x.groovy')
