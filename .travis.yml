@@ -25,32 +25,31 @@ install:
 
 matrix:
   include:
-    - env: BC='indy'
-      jdk: openjdk15
-    - env: BC='indy'
-      jdk: openjdk14
-    - env: BC='indy'
-      jdk: openjdk13
-    - env: BC='indy'
-      jdk: openjdk12
-    - env: BC='indy'
-      jdk: openjdk11
-    - env: BC='indy'
-      jdk: openjdk10
-    - env: BC='indy'
-      jdk: oraclejdk9
-    - env: BC='indy'
-      jdk: oraclejdk8
-
-#    - env: BC='sonar'
+#    - env: BC='indy'
+#      jdk: openjdk15
+#    - env: BC='indy'
+#      jdk: openjdk14
+#    - env: BC='indy'
+#      jdk: openjdk13
+#    - env: BC='indy'
+#      jdk: openjdk12
+#    - env: BC='indy'
 #      jdk: openjdk11
+#    - env: BC='indy'
+#      jdk: openjdk10
+#    - env: BC='indy'
+#      jdk: oraclejdk9
+#    - env: BC='indy'
+#      jdk: oraclejdk8
+    - env: BC='sonar'
+      jdk: openjdk11
 
 before_script:
   - unset _JAVA_OPTIONS
 
 script:
   - ./gradlew -version
-  - if [ "$BC" == "indy" ]; then travis_wait 60 ./gradlew test; elif [ "$BC" == "sonar" ]; then travis_wait 60 ./gradlew sonarqube -Dsonar.login=$SONAR_LOGIN -Pcoverage=true; fi
+  - if [ "$BC" == "indy" ]; then travis_wait 60 ./gradlew test; elif [ "$BC" == "sonar" ]; then travis_wait 60 ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN -Pcoverage=true; fi
 
 # As recommended in:
 # https://docs.travis-ci.com/user/languages/java/#Caching
@@ -62,4 +61,3 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-
