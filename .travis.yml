@@ -14,8 +14,7 @@
 # limitations under the License.
 
 language: groovy
-node_js:
-  - node
+
 
 # set sudo required for non-container vm with more mem even though we don't need sudo
 # https://docs.travis-ci.com/user/reference/overview/
