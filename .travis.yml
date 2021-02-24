@@ -13,28 +13,44 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+language: groovy
+
+# set sudo required for non-container vm with more mem even though we don't need sudo
+# https://docs.travis-ci.com/user/reference/overview/
+sudo: required
+dist: trusty
+
+install:
+  - git fetch --unshallow
+
 matrix:
   include:
-    - language: node_js
-      node_js:
-        - node
-    - language: groovy
-      dist: trusty
-      # set sudo required for non-container vm with more mem even though we don't need sudo
-      # https://docs.travis-ci.com/user/reference/overview/
-      sudo: required
-      env: BC='sonar'
-      jdk: openjdk1
+#    - env: BC='indy'
+#      jdk: openjdk15
+#    - env: BC='indy'
+#      jdk: openjdk14
+#    - env: BC='indy'
+#      jdk: openjdk13
+#    - env: BC='indy'
+#      jdk: openjdk12
+#    - env: BC='indy'
+#      jdk: openjdk11
+#    - env: BC='indy'
+#      jdk: openjdk10
+#    - env: BC='indy'
+#      jdk: oraclejdk9
+#    - env: BC='indy'
+#      jdk: oraclejdk8
+    - env: BC='sonar'
+      jdk: openjdk11
 
-      install:
-        - git fetch --unshallow
+addons:
+  sonarcloud:
+    organization: "joomporg"
 
-      before_script:
-        - unset _JAVA_OPTIONS
-
-      script:
-        - ./gradlew -version
-        - travis_wait 60 ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN -Pcoverage=true; fi
+script:
+  - ./gradlew -version
+  - travis_wait 60 ./gradlew sonarqube
 
 # As recommended in:
 # https://docs.travis-ci.com/user/languages/java/#Caching
