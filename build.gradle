@@ -266,6 +266,7 @@ sonarqube {
     property "sonar.sources", "."
     property "sonar.tests", ""
     property "sonar.test.inclusions", "**/*test*/**"
+    property "sonar.sources.exclusions", "**/*test*/**"
     property "sonar.exclusions", "**/*test*/**"
   }
 }
