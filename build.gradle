@@ -263,5 +263,6 @@ sonarqube {
     property "sonar.organization", "joomporg"
     property "sonar.host.url", "https://sonarcloud.io"
     property "sonar.exclusions", "**/test/**"
+    property "sonar.sources", "src"
   }
 }
