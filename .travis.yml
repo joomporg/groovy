@@ -49,7 +49,7 @@ before_script:
 
 script:
   - ./gradlew -version
-  - if [ "$BC" == "indy" ]; then travis_wait 60 ./gradlew test; elif [ "$BC" == "sonar" ]; then travis_wait 60 ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN; fi
+  - if [ "$BC" == "indy" ]; then travis_wait 60 ./gradlew test; elif [ "$BC" == "sonar" ]; then travis_wait 60 ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN -Pcoverage=true; fi
 
 # As recommended in:
 # https://docs.travis-ci.com/user/languages/java/#Caching
