@@ -263,7 +263,9 @@ sonarqube {
     property "sonar.organization", "joomporg"
     property "sonar.host.url", "https://sonarcloud.io"
     property "sonar.sources", "src"
-    property "sonar.tests", ""
+    property "sonar.tests", "src"
+    properties["sonar.sources"] += "subprojects"
+    properties["sonar.tests"] += "subprojects"
     property "sonar.test.inclusions", "**/*test*/**"
     property "sonar.exclusions", "**/*test*/**"
   }
